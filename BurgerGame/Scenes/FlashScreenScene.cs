@@ -10,7 +10,7 @@ namespace BurgerPoolGame.Scenes
         Texture2D _LogoTexture = null;
         SpriteBatch _SpriteBatch = null;
         Rectangle _LogoRect;
-        float _SecondsLeft = 5.0f;
+        float _SecondsLeft = 2.0f;
 
         public FlashScreenScene()
         {
@@ -45,6 +45,10 @@ namespace BurgerPoolGame.Scenes
             IGame game = BurgerGame.Instance();
             // Load all assets for game here
             game.CM().Load<Texture2D>("logo");
+            game.CM().Load<Texture2D>("background");
+            game.CM().Load<Texture2D>("3D Cheeseburger Texture");
+            game.CM().Load<Model>("3D Cheeseburger");
+            
         }
 
         public void Update(float pSeconds)

@@ -12,7 +12,6 @@ public class BurgerGame : Game, IGame
 {
     private static IGame _GameInstance = null;
     private GraphicsDeviceManager _Graphics;
-    private SpriteBatch _SpriteBatch;
     private SceneManager _SceneManager;
     private SoundManager _SoundManager;
     private IController _Controller;
@@ -57,7 +56,6 @@ public class BurgerGame : Game, IGame
 
     protected override void LoadContent()
     {
-        _SpriteBatch = new SpriteBatch(GraphicsDevice);
         //Add sounds here
         //_SoundManager.Add("SoundName");
         _SceneManager.ChangeScene(new FlashScreenScene(), false);
