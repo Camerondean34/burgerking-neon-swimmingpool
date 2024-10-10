@@ -104,6 +104,10 @@ namespace BurgerPoolGame.Scenes
             {
                 BurgerGame.Instance().SM().ChangeScene(null);
             }
+            if(_Controller.IsPressed(Control.ENTER))
+            {
+                BurgerGame.Instance().SM().ChangeScene(new MiniGameScene(), false);
+            }
 
             MouseState cursor = Mouse.GetState();
             _handRect.X = cursor.X - (_handRect.Width / 2);
