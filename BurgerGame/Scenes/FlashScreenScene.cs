@@ -48,7 +48,9 @@ namespace BurgerPoolGame.Scenes
             game.CM().Load<Texture2D>("background");
             game.CM().Load<Texture2D>("3D Cheeseburger Texture");
             game.CM().Load<Model>("3D Cheeseburger");
-            
+            game.CM().Load<Texture2D>("HandClosed");
+            game.CM().Load<Texture2D>("HandOpen");
+
         }
 
         public void Update(float pSeconds)

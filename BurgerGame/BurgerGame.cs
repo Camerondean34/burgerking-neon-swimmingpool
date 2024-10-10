@@ -50,7 +50,8 @@ public class BurgerGame : Game, IGame
 
         Dictionary<Keys, Control> buttonMap = new Dictionary<Keys, Control>();
         buttonMap.Add(Keys.Enter, Control.ENTER); ;
-        buttonMap.Add(Keys.Escape, Control.ESCAPE); ;
+        buttonMap.Add(Keys.Escape, Control.ESCAPE);
+        buttonMap.Add(Keys.E, Control.CLICK);
         _Controller = new Controller(buttonMap);
     }
 

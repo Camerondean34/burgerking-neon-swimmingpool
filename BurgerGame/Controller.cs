@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BurgerPoolGame
 {
-    public enum Control { ENTER, ESCAPE };
+    public enum Control { ENTER, ESCAPE, CLICK };
 
     public interface IController
     {
@@ -41,6 +41,10 @@ namespace BurgerPoolGame
             {
                 _ControlsDown[kvp.Value] = keyboardState.IsKeyDown(kvp.Key);
             }
+            MouseState mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed)
+                _ControlsDown[Control.CLICK] = true;
+
         }
 
         private void SetPreviousControlsDown(float pSeconds)
