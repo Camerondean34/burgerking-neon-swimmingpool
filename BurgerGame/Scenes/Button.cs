@@ -22,16 +22,9 @@ namespace BurgerPoolGame.Scenes
             doButton = pDoButton;
         }
 
-        public bool IsHover(Vector2 pMouse)
+        public void Update(int x, int y)
         {
-            if(_Rect.Contains(pMouse))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            Selected = _Rect.Contains(x, y);
         }
 
         public bool PressButton()

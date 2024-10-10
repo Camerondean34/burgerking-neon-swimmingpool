@@ -48,6 +48,11 @@ namespace BurgerPoolGame.Scenes
 
             game.CM().Load<Texture2D>("Backgrounds/Resturant");
             game.CM().Load<Texture2D>("Backgrounds/Pool");
+            game.CM().Load<Texture2D>("Backgrounds/Bedroom");
+            game.CM().Load<Texture2D>("Backgrounds/EmptyCloset");
+            game.CM().Load<Texture2D>("Backgrounds/FullCloset");
+            game.CM().Load<Texture2D>("Backgrounds/WakeUp");
+            game.CM().Load<Texture2D>("Backgrounds/MainMenu");
 
             game.CM().Load<Model>("3DModels/Burger");
             game.CM().Load<Texture2D>("3DModels/BurgerTexture");
@@ -71,7 +76,12 @@ namespace BurgerPoolGame.Scenes
 
             game.CM().Load<Texture2D>("Spatula");
 
-            for(int i=1; i <=150; ++i)
+            game.CM().Load<Texture2D>("StartButton");
+            game.CM().Load<Texture2D>("StartButtonPressed");
+            game.CM().Load<Texture2D>("ExitButton");
+            game.CM().Load<Texture2D>("ExitButtonPressed");
+
+            for (int i=1; i <=150; ++i)
             {
                 game.CM().Load<Texture2D>("Video/ezgif-frame-" + i.ToString("D3"));
             }
