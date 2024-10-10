@@ -44,15 +44,34 @@ namespace BurgerPoolGame.Scenes
         {
             IGame game = BurgerGame.Instance();
             // Load all assets for game here
-            game.CM().Load<Texture2D>("logo");
-            game.CM().Load<Texture2D>("background");
-            game.CM().Load<Texture2D>("3D Cheeseburger Texture");
-            game.CM().Load<Model>("3D Cheeseburger");
-            game.CM().Load<Texture2D>("BK_Color");
-            game.CM().Load<Model>("3DCrown");
-            game.CM().Load<Texture2D>("HandClosed");
-            game.CM().Load<Texture2D>("HandOpen");
-            
+            game.CM().Load<Texture2D>("Logo");
+
+            game.CM().Load<Texture2D>("Backgrounds/Resturant");
+            game.CM().Load<Texture2D>("Backgrounds/Pool");
+
+            game.CM().Load<Model>("3DModels/Burger");
+            game.CM().Load<Texture2D>("3DModels/BurgerTexture");
+            game.CM().Load<Model>("3DModels/Crown");
+            game.CM().Load<Texture2D>("3DModels/BK_Color");
+
+            game.CM().Load<Texture2D>("Hands/Grab");
+            game.CM().Load<Texture2D>("Hands/Open");
+            game.CM().Load<Texture2D>("Hands/Gun");
+
+            game.CM().Load<Texture2D>("Minigame/Burger");
+            game.CM().Load<Texture2D>("Minigame/NeonBurger");
+            game.CM().Load<Texture2D>("Minigame/Explosion");
+            game.CM().Load<Texture2D>("Minigame/Crosshair");
+            game.CM().Load<Texture2D>("Minigame/EmptyClip");
+            game.CM().Load<Texture2D>("Minigame/OneClip");
+            game.CM().Load<Texture2D>("Minigame/TwoClip");
+            game.CM().Load<Texture2D>("Minigame/ThreeClip");
+            game.CM().Load<Texture2D>("Minigame/FourClip");
+            game.CM().Load<Texture2D>("Minigame/FullClip");
+
+            game.CM().Load<Texture2D>("Spatula");
+
+
 
         }
 

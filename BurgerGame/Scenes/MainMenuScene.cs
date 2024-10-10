@@ -32,15 +32,15 @@ namespace BurgerPoolGame.Scenes
 
             int screenWidth = BurgerGame.Instance().GDM().GraphicsDevice.Viewport.Width;
             int screenHeight = BurgerGame.Instance().GDM().GraphicsDevice.Viewport.Height;
-            _background = BurgerGame.Instance().CM().Load<Texture2D>("background");
+            _background = BurgerGame.Instance().CM().Load<Texture2D>("Backgrounds/Resturant");
             _backgroundRect = new Rectangle(0, 0, screenWidth, screenHeight);
 
-            _handOpen = BurgerGame.Instance().CM().Load<Texture2D>("HandOpen");
-            _handGrab = BurgerGame.Instance().CM().Load<Texture2D>("HandClosed");
+            _handOpen = BurgerGame.Instance().CM().Load<Texture2D>("Hands/Open");
+            _handGrab = BurgerGame.Instance().CM().Load<Texture2D>("Hands/Grab");
             _handRect = new Rectangle(0, 0, screenWidth / 5, screenHeight / 2);
 
-            _burgerTexture = BurgerGame.Instance().CM().Load<Texture2D>("3D Cheeseburger Texture");
-            _burger = BurgerGame.Instance().CM().Load<Model>("3D Cheeseburger");
+            _burgerTexture = BurgerGame.Instance().CM().Load<Texture2D>("3DModels/BurgerTexture");
+            _burger = BurgerGame.Instance().CM().Load<Model>("3DModels/Burger");
             _burgerPos = new Vector3(0, 0, 0);
 
             _world = Matrix.CreateTranslation(_burgerPos);
