@@ -100,13 +100,13 @@ namespace BurgerPoolGame.Scenes
         public void Update(float pSeconds)
         {
             _Controller.UpdateController(pSeconds);
-            if (_Controller.IsPressed(Control.ESCAPE))
+            if (_Controller.IsPressed(Control.ESCAPE) && !_Controller.WasPressed(Control.ESCAPE))
             {
-                BurgerGame.Instance().SM().ChangeScene(null);
+                BurgerGame.Instance().SM().ChangeScene(null, false);
             }
             if(_Controller.IsPressed(Control.ENTER))
             {
-                BurgerGame.Instance().SM().ChangeScene(new MiniGameScene(), false);
+                BurgerGame.Instance().SM().ChangeScene(new CarDriveScene(), false);
             }
 
             MouseState cursor = Mouse.GetState();

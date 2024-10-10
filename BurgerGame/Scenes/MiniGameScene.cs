@@ -58,7 +58,7 @@ namespace BurgerPoolGame.Scenes
         public void Update(float pSeconds)
         {
             _Controller.UpdateController(pSeconds);
-            if (_Controller.IsPressed(Control.ESCAPE))
+            if (_Controller.IsPressed(Control.ESCAPE) && !_Controller.WasPressed(Control.ESCAPE))
             {
                 BurgerGame.Instance().SM().ChangeScene(null);
             }

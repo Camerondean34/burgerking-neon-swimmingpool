@@ -19,10 +19,6 @@ namespace BurgerPoolGame.Scenes
 
         public void ChangeScene(IScene pNextScene, bool replaceCurrent = true)
         {
-            if (pNextScene == null)
-            {
-                pNextScene = Previous;
-            }
             if (replaceCurrent)
             {
                 Pop();
@@ -31,7 +27,7 @@ namespace BurgerPoolGame.Scenes
             {
                 _Scenes.Add(pNextScene);
             }
-            else // If there is no scene to transition to exit the game
+            else if (_Scenes.Count == 0 || (_Scenes.Count == 1 && !replaceCurrent))
             {
                 BurgerGame game = (BurgerGame)BurgerGame.Instance();
                 game.Exit();

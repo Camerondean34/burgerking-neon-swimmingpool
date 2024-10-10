@@ -71,8 +71,10 @@ namespace BurgerPoolGame.Scenes
 
             game.CM().Load<Texture2D>("Spatula");
 
-
-
+            for(int i=1; i <=150; ++i)
+            {
+                game.CM().Load<Texture2D>("Video/ezgif-frame-" + i.ToString("D3"));
+            }
         }
 
         public void Update(float pSeconds)
