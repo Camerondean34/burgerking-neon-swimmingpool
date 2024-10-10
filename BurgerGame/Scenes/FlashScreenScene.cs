@@ -75,11 +75,16 @@ namespace BurgerPoolGame.Scenes
             game.CM().Load<Texture2D>("Minigame/FullClip");
 
             game.CM().Load<Texture2D>("Spatula");
+            game.CM().Load<Texture2D>("Uniform");
 
             game.CM().Load<Texture2D>("StartButton");
             game.CM().Load<Texture2D>("StartButtonPressed");
             game.CM().Load<Texture2D>("ExitButton");
             game.CM().Load<Texture2D>("ExitButtonPressed");
+
+            game.CM().Load<Texture2D>("DialougeBox");
+            game.CM().Load<SpriteFont>("DialougeFont");
+
 
             for (int i=1; i <=150; ++i)
             {

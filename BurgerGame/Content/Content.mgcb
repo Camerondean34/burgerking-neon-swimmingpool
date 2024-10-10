@@ -159,6 +159,25 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/WakeUp.jpg
 
+#begin DialougeBox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:DialougeBox.png
+
+#begin DialougeFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:DialougeFont.spritefont
+
 #begin ExitButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -386,6 +405,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:StartButtonPressed.png
+
+#begin Uniform.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Uniform.png
 
 #begin Video/ezgif-frame-001.jpg
 /importer:TextureImporter
