@@ -84,12 +84,6 @@ namespace BurgerPoolGame.Scenes
 
             game.CM().Load<Texture2D>("DialougeBox");
             game.CM().Load<SpriteFont>("DialougeFont");
-
-
-            for (int i=1; i <=150; ++i)
-            {
-                game.CM().Load<Texture2D>("Video/ezgif-frame-" + i.ToString("D3"));
-            }
         }
 
         public void Update(float pSeconds)

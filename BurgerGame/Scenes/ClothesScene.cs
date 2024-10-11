@@ -96,7 +96,7 @@ namespace BurgerPoolGame.Scenes
 
                 if (_Controller.IsPressed(Control.CLICK) && !_Controller.WasPressed(Control.CLICK))
                 {
-                    BurgerGame.Instance().SM().ChangeScene(new CarDriveScene());
+                    BurgerGame.Instance().SM().ChangeScene(new LoadingScene());
                 }
             }
         }

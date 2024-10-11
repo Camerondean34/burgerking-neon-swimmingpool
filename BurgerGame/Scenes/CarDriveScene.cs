@@ -43,13 +43,23 @@ namespace BurgerPoolGame.Scenes
                 if (_currentFrame >= _FrameCount)
                 {
                     _currentFrame = 0;
-                    BurgerGame.Instance().SM().ChangeScene(new MiniGameScene());
+                    EndScene();
                 }
             }
             _Controller.UpdateController(pSeconds);
             if (_Controller.IsPressed(Control.CLICK) && !_Controller.WasPressed(Control.CLICK))
             {
-                BurgerGame.Instance().SM().ChangeScene(new MiniGameScene());
+                EndScene();
+            }
+        }
+
+        private void EndScene()
+        {
+            BurgerGame.Instance().SM().ChangeScene(new MiniGameScene());
+            IGame game = BurgerGame.Instance();
+            for (int i = 1; i <= 150; ++i)
+            {
+                game.CM().UnloadAsset("Video/ezgif-frame-" + i.ToString("D3"));
             }
         }
 
