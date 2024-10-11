@@ -18,7 +18,6 @@ namespace BurgerPoolGame.Scenes
         private Rectangle _BurgerKingRect;
         private Rectangle _CharacterRect;
 
-
         private Texture2D _DialougeBox;
         private Rectangle _DialougeBoxRect;
         private Rectangle _NameBox;

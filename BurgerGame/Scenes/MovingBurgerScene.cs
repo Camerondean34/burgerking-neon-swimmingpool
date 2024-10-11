@@ -25,6 +25,17 @@ namespace BurgerPoolGame.Scenes
         private Texture2D _handGrab;
         private Rectangle _handRect;
 
+        private float _SecondsLeft = 15.0f;
+
+        private Texture2D _DialougeBox;
+        private Rectangle _DialougeBoxRect;
+        private SpriteFont _DialougeFont;
+        private string _DialougeText = string.Empty;
+
+        private Texture2D _CharacterTexture;
+        private Rectangle _CharacterRect;
+
+
         public MovingBurgerScene()
         {
             _SpriteBatch = new SpriteBatch(BurgerGame.Instance().GDM().GraphicsDevice);
@@ -46,6 +57,13 @@ namespace BurgerPoolGame.Scenes
             _world = Matrix.CreateTranslation(_burgerPos);
             _view = Matrix.CreateLookAt(new Vector3(0.0f, 0.0f, 50.0f), new Vector3(0.0f, 0.0f, 0.0f), Vector3.UnitY);
             _projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), (float)screenWidth / (float)screenHeight, 0.1f, 100f);
+
+            _DialougeBox = BurgerGame.Instance().CM().Load<Texture2D>("DialougeBox");
+            _DialougeBoxRect = new Rectangle(20, screenHeight - screenHeight / 4, screenWidth - 40, (screenHeight / 4) - 20);
+            _DialougeFont = BurgerGame.Instance().CM().Load<SpriteFont>("DialougeFont");
+
+            _CharacterTexture = BurgerGame.Instance().CM().Load<Texture2D>("Characters/Michelle");
+            _CharacterRect = new Rectangle(4 * screenWidth / 5, screenHeight / 4, screenWidth / 4, screenHeight * 3 / 4);
         }
 
         public void Draw(float pSeconds)
@@ -53,6 +71,12 @@ namespace BurgerPoolGame.Scenes
             BurgerGame.Instance().GDM().GraphicsDevice.Clear(Color.CornflowerBlue);
             _SpriteBatch.Begin();
             _SpriteBatch.Draw(_background, _backgroundRect, Color.White);
+            if (_DialougeText != string.Empty)
+            {
+                _SpriteBatch.Draw(_CharacterTexture, _CharacterRect, Color.White);
+                _SpriteBatch.Draw(_DialougeBox, _DialougeBoxRect, Color.White);
+                _SpriteBatch.DrawString(_DialougeFont, _DialougeText, new Vector2(40, _DialougeBoxRect.Y + 20), Color.Black);
+            }
             _SpriteBatch.End();
             Draw3DModel(_burger, _world, _view, _projection);
             _SpriteBatch.Begin();
@@ -100,15 +124,6 @@ namespace BurgerPoolGame.Scenes
         public void Update(float pSeconds)
         {
             _Controller.UpdateController(pSeconds);
-            if (_Controller.IsPressed(Control.ESCAPE) && !_Controller.WasPressed(Control.ESCAPE))
-            {
-                BurgerGame.Instance().SM().ChangeScene(null);
-            }
-            if (_Controller.IsPressed(Control.ENTER))
-            {
-                BurgerGame.Instance().SM().ChangeScene(new CarDriveScene(), false);
-            }
-
             MouseState cursor = Mouse.GetState();
             _handRect.X = cursor.X - (_handRect.Width / 2);
             _handRect.Y = cursor.Y - (_handRect.Height / 3);
@@ -128,6 +143,22 @@ namespace BurgerPoolGame.Scenes
                 _world = Matrix.CreateTranslation(_burgerPos);
             }
             _world = Matrix.CreateRotationY(pSeconds) * _world;
+
+            _SecondsLeft -= pSeconds;
+            if (_SecondsLeft <= 0)
+            {
+                if (_DialougeText == string.Empty)
+                {
+                    _DialougeText = "hey... Psst. Flipping burgers is pretty stressful.\r\n" +
+                        "Take this and go to the Employee Swimming Pool to destress before you start your shift.\r\n" +
+                        "*Hands you a 9x19mm pistol*";
+                }
+
+                if (_Controller.IsPressed(Control.CLICK) && !_Controller.WasPressed(Control.CLICK))
+                {
+                    BurgerGame.Instance().SM().ChangeScene(new MiniGameScene());
+                }
+            }
         }
     }
 }
