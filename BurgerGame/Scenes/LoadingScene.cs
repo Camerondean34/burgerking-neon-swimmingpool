@@ -25,7 +25,7 @@ namespace BurgerPoolGame.Scenes
         private Rectangle _loadingBoxRect;
         private Rectangle _loadingBarRect;
 
-        const float _LoadingTime = 2.0f;
+        const float _LoadingTime = 2.6f;
         float _SecondsLeft;
 
         public LoadingScene()

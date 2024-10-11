@@ -55,7 +55,7 @@ namespace BurgerPoolGame.Scenes
 
         private void EndScene()
         {
-            BurgerGame.Instance().SM().ChangeScene(new MiniGameScene());
+            BurgerGame.Instance().SM().ChangeScene(new RestaurantScene());
             IGame game = BurgerGame.Instance();
             for (int i = 1; i <= 150; ++i)
             {

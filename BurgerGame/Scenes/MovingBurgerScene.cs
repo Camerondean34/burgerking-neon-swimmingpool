@@ -32,7 +32,7 @@ namespace BurgerPoolGame.Scenes
 
             int screenWidth = BurgerGame.Instance().GDM().GraphicsDevice.Viewport.Width;
             int screenHeight = BurgerGame.Instance().GDM().GraphicsDevice.Viewport.Height;
-            _background = BurgerGame.Instance().CM().Load<Texture2D>("Backgrounds/Resturant");
+            _background = BurgerGame.Instance().CM().Load<Texture2D>("Backgrounds/KitchenStove");
             _backgroundRect = new Rectangle(0, 0, screenWidth, screenHeight);
 
             _handOpen = BurgerGame.Instance().CM().Load<Texture2D>("Hands/Open");
