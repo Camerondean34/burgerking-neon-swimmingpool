@@ -8,7 +8,7 @@ namespace BurgerPoolGame.Scenes
         private Texture2D _Texture;
         private Texture2D _TexturePressed;
         private Color _SelectedColour;
-        private Rectangle _Rect;
+        public Rectangle Rect { get; private set; }
         public bool Selected { get; set; }
         public delegate void Action();
         private Action doButton;
@@ -17,14 +17,14 @@ namespace BurgerPoolGame.Scenes
         {
             _Texture = pTexture;
             _TexturePressed = pTexturePressed;
-            _Rect = pRect;
+            Rect = pRect;
             _SelectedColour = pColour;
             doButton = pDoButton;
         }
 
         public void Update(int x, int y)
         {
-            Selected = _Rect.Contains(x, y);
+            Selected = Rect.Contains(x, y);
         }
 
         public bool PressButton()
@@ -41,8 +41,8 @@ namespace BurgerPoolGame.Scenes
 
         public void Draw(SpriteBatch pSpriteBatch)
         {
-            if (Selected) pSpriteBatch.Draw(_TexturePressed, _Rect, _SelectedColour);
-            else pSpriteBatch.Draw(_Texture, _Rect, Color.White);
+            if (Selected) pSpriteBatch.Draw(_TexturePressed, Rect, _SelectedColour);
+            else pSpriteBatch.Draw(_Texture, Rect, Color.White);
         }
     }
 }
