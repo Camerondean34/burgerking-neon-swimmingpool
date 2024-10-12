@@ -116,7 +116,7 @@ namespace BurgerPoolGame.Scenes
                     _health = _health - 1;
                     if (_health == 0)
                     {
-                        BurgerGame.Instance().SM().ChangeScene(new ChoiceScene());
+                        BurgerGame.Instance().SM().ChangeScene(new MiniGameEndScene());
                     }
                 }
             }
