@@ -37,7 +37,7 @@ namespace BurgerPoolGame.Scenes
             };
 
             _CharacterTexture = BurgerGame.Instance().CM().Load<Texture2D>("Characters/BurgerKing");
-            _CharacterRect = new Rectangle(2 * screenWidth / 5, 0, screenWidth / 4, screenHeight * 3 / 4);
+            _CharacterRect = new Rectangle(2 * screenWidth / 5, screenHeight / 4, screenWidth / 4, screenHeight * 3 / 4);
 
             _DialougeBox = BurgerGame.Instance().CM().Load<Texture2D>("DialougeBox");
             _DialougeBoxRect = new Rectangle(20, screenHeight - screenHeight / 4, screenWidth - 40, (screenHeight / 4) - 20);

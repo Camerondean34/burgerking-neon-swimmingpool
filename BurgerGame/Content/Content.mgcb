@@ -430,7 +430,7 @@
 /processorParam:TextureFormat=Color
 /build:Hands/Open.png
 
-#begin Logo.jpg
+#begin logo.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -440,7 +440,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Logo.jpg
+/build:logo.jpg
 
 #begin Minigame/Burger.png
 /importer:TextureImporter

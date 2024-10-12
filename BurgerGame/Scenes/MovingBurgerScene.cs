@@ -25,7 +25,7 @@ namespace BurgerPoolGame.Scenes
         private Texture2D _handGrab;
         private Rectangle _handRect;
 
-        private float _SecondsLeft = 15.0f;
+        private float _SecondsLeft = 8.4f;
 
         private Texture2D _DialougeBox;
         private Rectangle _DialougeBoxRect;
