@@ -1,12 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 
 namespace BurgerPoolGame.Scenes
 {
     public class MiniGameScene : IScene
     {
+        private int _screenWidth = BurgerGame.Instance().GDM().GraphicsDevice.Viewport.Width;
+        private int _screenHeight = BurgerGame.Instance().GDM().GraphicsDevice.Viewport.Height;
         private IController _Controller;
         private SpriteBatch _SpriteBatch;
 
@@ -22,11 +26,13 @@ namespace BurgerPoolGame.Scenes
         private Texture2D _handGun;
         private Rectangle _handRect;
 
-        private List<Rectangle> _targets;
-        private Texture2D _targetTexture;
+        private List<Rectangle> _targets = new List<Rectangle>();
+        private Texture2D _targetTexture = BurgerGame.Instance().CM().Load<Texture2D>("Minigame/Burger");
 
         private float _score = 0;
         private int _health = 5;
+        private int _spawnedThisSeccond = 0;
+        private DateTime _previousTime = new DateTime();
 
         public MiniGameScene()
         {
@@ -54,7 +60,11 @@ namespace BurgerPoolGame.Scenes
             _SpriteBatch.Begin();
             _SpriteBatch.Draw(_background, _backgroundRect, Color.White);
             _SpriteBatch.Draw(_crosshair, _crosshairRect, Color.White);
-
+            foreach (Rectangle target in _targets)
+            {
+                _SpriteBatch.Draw(_targetTexture, target, Color.White);
+            }
+            
             if (_Controller.IsPressed(Control.CLICK))
                 _SpriteBatch.Draw(_explosion, _explosionRect, Color.White);
 
@@ -77,6 +87,43 @@ namespace BurgerPoolGame.Scenes
             _crosshairRect.Y = cursor.Y - _crosshairRect.Height / 2;
             _explosionRect.X = cursor.X - _explosionRect.Width / 2;
             _explosionRect.Y = cursor.Y - _explosionRect.Height / 2;
+
+            if (_Controller.IsPressed(Control.CLICK))
+            {
+                List<Rectangle> toRemove = new List<Rectangle>();
+                foreach(Rectangle target in _targets)
+                {
+                    if (target.Contains(cursor.X, cursor.Y))
+                    {
+                        toRemove.Add(target);
+                    }
+                }
+                foreach(Rectangle target in toRemove)
+                {
+                    _targets.Remove(target);
+                }
+            }
+
+            // Make targets fall
+            for (int i = 0; i < _targets.Count; i++)
+            {
+                Rectangle burger = _targets[i];
+                burger.Y = burger.Y + 1;
+                _targets[i] = burger;
+            }
+
+            // Make targets spawn randomly
+            TimeSpan timeSinceLastSpawn = DateTime.Now - _previousTime;
+            int spawnRate = (int)((timeSinceLastSpawn.Seconds / 5000) + 1);
+            if (_spawnedThisSeccond < spawnRate)
+            {
+                Random rng = new Random();
+                for (int i = 0; i < spawnRate - _spawnedThisSeccond; i++)
+                {
+                    Rectangle newBurger = new Rectangle(rng.Next(0, _screenWidth), 0, 100, 100);
+                    _targets.Add(newBurger);
+                }
+            }
         }
     }
 }
