@@ -89,6 +89,7 @@ namespace BurgerPoolGame.Scenes
 
         private void Draw3DModel(Model model, Matrix world, Matrix view, Matrix projection)
         {
+            BurgerGame.Instance().GDM().GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
