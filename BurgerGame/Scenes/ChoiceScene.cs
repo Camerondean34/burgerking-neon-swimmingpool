@@ -66,7 +66,7 @@ namespace BurgerPoolGame.Scenes
 
         private void Burger()
         {
-            BurgerGame.Instance().SM().ChangeScene(null);
+            BurgerGame.Instance().SM().ChangeScene(new RaveScene());
         }
 
         public void Draw(float pSeconds)
