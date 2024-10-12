@@ -75,6 +75,18 @@
 /processorParam:TextureFormat=Color
 /build:3DModels/Crown.fbx
 
+#begin Audio/Crash.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Crash.wav
+
+#begin Audio/GameMusic.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/GameMusic.mp3
+
 #begin Backgrounds/Bedroom.png
 /importer:TextureImporter
 /processor:TextureProcessor

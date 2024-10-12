@@ -62,6 +62,9 @@ namespace BurgerPoolGame.Scenes
             game.CM().Load<Texture2D>("Characters/Michelle");
             game.CM().Load<Texture2D>("Characters/Number15");
 
+            game.CM().Load<SoundEffect>("Audio/Crash");
+            game.CM().Load<SoundEffect>("Audio/GameMusic");
+
             game.CM().Load<Model>("3DModels/Burger");
             game.CM().Load<Texture2D>("3DModels/BurgerTexture");
             game.CM().Load<Model>("3DModels/Crown");
