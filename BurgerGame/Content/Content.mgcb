@@ -219,6 +219,18 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/WakeUp.jpg
 
+#begin Backgrounds/Weatherspoons.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/Weatherspoons.jpg
+
 #begin Characters/BurgerKing.png
 /importer:TextureImporter
 /processor:TextureProcessor
