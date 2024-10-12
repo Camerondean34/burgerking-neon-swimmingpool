@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace BurgerPoolGame.Scenes
 {
@@ -20,6 +21,12 @@ namespace BurgerPoolGame.Scenes
 
         private Texture2D _handGun;
         private Rectangle _handRect;
+
+        private List<Rectangle> _targets;
+        private Texture2D _targetTexture;
+
+        private float _score = 0;
+        private int _health = 5;
 
         public MiniGameScene()
         {
