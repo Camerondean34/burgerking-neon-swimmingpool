@@ -62,9 +62,6 @@ namespace BurgerPoolGame.Scenes
             game.CM().Load<Texture2D>("Characters/Michelle");
             game.CM().Load<Texture2D>("Characters/Number15");
 
-            game.CM().Load<SoundEffect>("Audio/Crash");
-            game.CM().Load<SoundEffect>("Audio/GameMusic");
-
             game.CM().Load<Model>("3DModels/Burger");
             game.CM().Load<Texture2D>("3DModels/BurgerTexture");
             game.CM().Load<Model>("3DModels/Crown");
@@ -95,6 +92,9 @@ namespace BurgerPoolGame.Scenes
 
             game.CM().Load<Texture2D>("DialougeBox");
             game.CM().Load<SpriteFont>("DialougeFont");
+
+            game.GetSoundManager().Add("GameMusic");
+            game.GetSoundManager().Add("Crash");
         }
 
         public void Update(float pSeconds)

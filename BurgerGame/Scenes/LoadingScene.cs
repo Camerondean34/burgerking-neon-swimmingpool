@@ -31,6 +31,8 @@ namespace BurgerPoolGame.Scenes
         public LoadingScene()
         {
             IGame game = BurgerGame.Instance();
+            game.StopMusic();
+
             _LogoTexture = game.CM().Load<Texture2D>("logo");
             _SpriteBatch = new SpriteBatch(game.GDM().GraphicsDevice);
             int screenWidth = game.GDM().GraphicsDevice.Viewport.Width;

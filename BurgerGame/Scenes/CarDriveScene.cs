@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace BurgerPoolGame.Scenes
 
         private SpriteBatch _SpriteBatch;
 
+        private SoundEffectInstance _CarSound;
+
         public CarDriveScene()
         {
             _SpriteBatch = new SpriteBatch(BurgerGame.Instance().GDM().GraphicsDevice);
@@ -29,6 +32,10 @@ namespace BurgerPoolGame.Scenes
             {
                 _VideoFrame[i - 1] = BurgerGame.Instance().CM().Load<Texture2D>("Video/ezgif-frame-" + i.ToString("D3"));
             }
+
+            _CarSound = BurgerGame.Instance().GetSoundManager().GetSoundEffectInstance("Crash");
+            _CarSound.Volume = 0.5f;
+            _CarSound.Play();
         }
 
         private float _elapsed = 0;
@@ -55,6 +62,7 @@ namespace BurgerPoolGame.Scenes
 
         private void EndScene()
         {
+            _CarSound.Stop();
             BurgerGame.Instance().SM().ChangeScene(new RestaurantScene());
             IGame game = BurgerGame.Instance();
             for (int i = 1; i <= 150; ++i)

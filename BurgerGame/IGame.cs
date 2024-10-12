@@ -12,6 +12,9 @@ namespace BurgerPoolGame
         GraphicsDeviceManager GDM();
         IController GetController();
 
+        void StopMusic();
+        void SetMusic(string pMusicName);
+
         void Exit();
     }
 }

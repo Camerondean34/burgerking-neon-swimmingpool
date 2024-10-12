@@ -30,6 +30,8 @@ namespace BurgerPoolGame.Scenes
             _DialougeBoxRect = new Rectangle(20, screenHeight - screenHeight / 4, screenWidth - 40, (screenHeight / 4) - 20);
 
             _DialougeFont = BurgerGame.Instance().CM().Load<SpriteFont>("DialougeFont");
+
+            BurgerGame.Instance().SetMusic("GameMusic");
         }
 
         public void Update(float pSeconds)

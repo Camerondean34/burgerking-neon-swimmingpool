@@ -14,7 +14,7 @@ namespace BurgerPoolGame
 
         public void Add(string pName)
         {
-            SoundEffect soundEffect = BurgerGame.Instance().CM().Load<SoundEffect>(pName);
+            SoundEffect soundEffect = BurgerGame.Instance().CM().Load<SoundEffect>("Audio/" + pName);
             mSoundEffects.Add(pName, soundEffect);
         }
 

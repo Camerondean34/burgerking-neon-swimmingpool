@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using BurgerPoolGame.Scenes;
 using System.Collections.Generic;
 using System.Net;
+using Microsoft.Xna.Framework.Audio;
 
 namespace BurgerPoolGame;
 
@@ -15,6 +16,7 @@ public class BurgerGame : Game, IGame
     private SceneManager _SceneManager;
     private SoundManager _SoundManager;
     private IController _Controller;
+    private SoundEffectInstance _MusicInstance;
 
     public static IGame Instance()
     {
@@ -76,5 +78,20 @@ public class BurgerGame : Game, IGame
         base.Draw(gameTime);
     }
 
-    
+    public void StopMusic()
+    {
+        if (_MusicInstance != null)
+        {
+            _MusicInstance.Stop();
+            _MusicInstance = null;
+        }
+    }
+
+    public void SetMusic(string pMusicName)
+    {
+        StopMusic();
+        _MusicInstance = _SoundManager.GetSoundEffectInstance(pMusicName);
+        _MusicInstance.IsLooped = true;
+        _MusicInstance.Play();
+    }
 }
