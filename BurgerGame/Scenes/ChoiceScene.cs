@@ -61,7 +61,7 @@ namespace BurgerPoolGame.Scenes
 
         private void Spids()
         {
-            BurgerGame.Instance().SM().ChangeScene(null);
+            BurgerGame.Instance().SM().ChangeScene(new SpidersScene());
         }
 
         private void Burger()
