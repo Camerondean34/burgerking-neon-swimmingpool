@@ -104,12 +104,21 @@ namespace BurgerPoolGame.Scenes
                 }
             }
 
-            // Make targets fall
+            // Make targets fall and add damage
             for (int i = 0; i < _targets.Count; i++)
             {
                 Rectangle burger = _targets[i];
                 burger.Y = burger.Y + 1;
                 _targets[i] = burger;
+
+                if (burger.Y > _screenHeight)
+                {
+                    _health = _health - 1;
+                    if (_health == 0)
+                    {
+                        BurgerGame.Instance().SM().ChangeScene(new ChoiceScene());
+                    }
+                }
             }
 
             // Make targets spawn randomly
