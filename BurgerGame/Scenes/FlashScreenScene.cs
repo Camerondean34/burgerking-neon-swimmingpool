@@ -57,6 +57,8 @@ namespace BurgerPoolGame.Scenes
             game.CM().Load<Texture2D>("Backgrounds/KitchenStove");
             game.CM().Load<Texture2D>("Backgrounds/Counter");
             game.CM().Load<Texture2D>("Backgrounds/Weatherspoons");
+            game.CM().Load<Texture2D>("Backgrounds/Spiders");
+            game.CM().Load<Texture2D>("Backgrounds/NEXTDAY");
 
             game.CM().Load<Texture2D>("Characters/BurgerKing");
             game.CM().Load<Texture2D>("Characters/Darryl");

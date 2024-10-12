@@ -171,6 +171,18 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/MainMenu.png
 
+#begin Backgrounds/NEXTDAY.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/NEXTDAY.jpg
+
 #begin Backgrounds/Pool.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -206,6 +218,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Backgrounds/Resturant.jpg
+
+#begin Backgrounds/Spiders.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/Spiders.jpg
 
 #begin Backgrounds/WakeUp.jpg
 /importer:TextureImporter

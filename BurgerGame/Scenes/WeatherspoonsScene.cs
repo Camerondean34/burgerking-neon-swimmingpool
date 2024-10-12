@@ -198,7 +198,7 @@ namespace BurgerPoolGame.Scenes
 
             if (_DialougeIndex > 31)
             {
-                BurgerGame.Instance().SM().ChangeScene(null);
+                BurgerGame.Instance().SM().ChangeScene(new EndingScene());
             }
         }
     }
