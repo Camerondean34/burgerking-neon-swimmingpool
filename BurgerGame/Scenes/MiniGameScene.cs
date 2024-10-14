@@ -26,12 +26,15 @@ namespace BurgerPoolGame.Scenes
         private Texture2D _handGun;
         private Rectangle _handRect;
 
+        private Texture2D[] _healthTextures;
+        private Rectangle _healthRect;
+
         private List<Rectangle> _targets = new List<Rectangle>();
         private Texture2D _targetTexture = BurgerGame.Instance().CM().Load<Texture2D>("Minigame/Burger");
 
         private float _score = 0;
-        private int _health = 5;
-        private int _spawnedThisSeccond = 0;
+        private int _health = 4;
+        private float _burgerTime = 0;
         private DateTime _previousTime = new DateTime();
 
         public MiniGameScene()
@@ -52,6 +55,16 @@ namespace BurgerPoolGame.Scenes
 
             _crosshair = BurgerGame.Instance().CM().Load<Texture2D>("Minigame/Crosshair");
             _crosshairRect = new Rectangle(0, 0, screenWidth / 10, screenWidth / 10);
+
+            _healthTextures = new Texture2D[5]
+            {
+                BurgerGame.Instance().CM().Load<Texture2D>("Minigame/EmptyClip"),
+                BurgerGame.Instance().CM().Load<Texture2D>("Minigame/TwoClip"),
+                BurgerGame.Instance().CM().Load<Texture2D>("Minigame/ThreeClip"),
+                BurgerGame.Instance().CM().Load<Texture2D>("Minigame/FourClip"),
+                BurgerGame.Instance().CM().Load<Texture2D>("Minigame/FullClip"),
+            };
+            _healthRect = new Rectangle(0, screenHeight * 4 / 5, screenWidth / 6, screenHeight / 5);
         }
 
         public void Draw(float pSeconds)
@@ -59,19 +72,20 @@ namespace BurgerPoolGame.Scenes
             BurgerGame.Instance().GDM().GraphicsDevice.Clear(Color.CornflowerBlue);
             _SpriteBatch.Begin();
             _SpriteBatch.Draw(_background, _backgroundRect, Color.White);
-            _SpriteBatch.Draw(_crosshair, _crosshairRect, Color.White);
             foreach (Rectangle target in _targets)
             {
                 _SpriteBatch.Draw(_targetTexture, target, Color.White);
             }
-            
-            if (_Controller.IsPressed(Control.CLICK))
-                _SpriteBatch.Draw(_explosion, _explosionRect, Color.White);
+            _SpriteBatch.Draw(_healthTextures[_health], _healthRect, Color.White);
 
+            _SpriteBatch.Draw(_crosshair, _crosshairRect, Color.White);
+            if (_timeSinceShot < 0.2f)
+                _SpriteBatch.Draw(_explosion, _explosionRect, Color.White);
             _SpriteBatch.Draw(_handGun, _handRect, Color.White);
             _SpriteBatch.End();
         }
 
+        private float _timeSinceShot = 1.0f;
         public void Update(float pSeconds)
         {
             _Controller.UpdateController(pSeconds);
@@ -88,19 +102,19 @@ namespace BurgerPoolGame.Scenes
             _explosionRect.X = cursor.X - _explosionRect.Width / 2;
             _explosionRect.Y = cursor.Y - _explosionRect.Height / 2;
 
-            if (_Controller.IsPressed(Control.CLICK))
+            _timeSinceShot += pSeconds;
+            if (_timeSinceShot > 0.5f && _Controller.IsPressed(Control.CLICK) && !_Controller.WasPressed(Control.CLICK))
             {
-                List<Rectangle> toRemove = new List<Rectangle>();
-                foreach(Rectangle target in _targets)
+                _timeSinceShot = 0.0f;
+                for (int i = 0; i < _targets.Count; i++)
                 {
+                    Rectangle target = _targets[i];
                     if (target.Contains(cursor.X, cursor.Y))
                     {
-                        toRemove.Add(target);
+                        _targets.Remove(target);
+                        _score += 1;
+                        --i;
                     }
-                }
-                foreach(Rectangle target in toRemove)
-                {
-                    _targets.Remove(target);
                 }
             }
 
@@ -113,8 +127,9 @@ namespace BurgerPoolGame.Scenes
 
                 if (burger.Y > _screenHeight)
                 {
+                    _targets.Remove(burger);
                     _health = _health - 1;
-                    if (_health == 0)
+                    if (_health < 0)
                     {
                         BurgerGame.Instance().SM().ChangeScene(new MiniGameEndScene());
                     }
@@ -122,16 +137,13 @@ namespace BurgerPoolGame.Scenes
             }
 
             // Make targets spawn randomly
-            TimeSpan timeSinceLastSpawn = DateTime.Now - _previousTime;
-            int spawnRate = (int)((timeSinceLastSpawn.Seconds / 5000) + 1);
-            if (_spawnedThisSeccond < spawnRate)
+            _burgerTime += pSeconds;
+            if (_burgerTime > 1.0f)
             {
                 Random rng = new Random();
-                for (int i = 0; i < spawnRate - _spawnedThisSeccond; i++)
-                {
-                    Rectangle newBurger = new Rectangle(rng.Next(0, _screenWidth), 0, 100, 100);
-                    _targets.Add(newBurger);
-                }
+                Rectangle newBurger = new Rectangle(rng.Next(0, _screenWidth - 100), -100, 100, 100);
+                _targets.Add(newBurger);
+                _burgerTime = 0;
             }
         }
     }
